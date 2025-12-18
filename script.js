@@ -139,6 +139,65 @@ document.querySelectorAll('.tech-badge').forEach(badge => {
     });
 });
 
+// Portfolio Screenshot Carousel
+let carouselIndices = {};
+
+function moveCarousel(appName, direction) {
+    if (!carouselIndices[appName]) {
+        carouselIndices[appName] = 0;
+    }
+
+    const slides = document.querySelectorAll(`#carousel-${appName} .carousel-slide`);
+    const dots = document.querySelectorAll(`#dots-${appName} .dot`);
+
+    // Remove active class from current slide and dot
+    slides[carouselIndices[appName]].classList.remove('active');
+    dots[carouselIndices[appName]].classList.remove('active');
+
+    // Update index
+    carouselIndices[appName] += direction;
+
+    // Loop around
+    if (carouselIndices[appName] >= slides.length) {
+        carouselIndices[appName] = 0;
+    } else if (carouselIndices[appName] < 0) {
+        carouselIndices[appName] = slides.length - 1;
+    }
+
+    // Add active class to new slide and dot
+    slides[carouselIndices[appName]].classList.add('active');
+    dots[carouselIndices[appName]].classList.add('active');
+}
+
+function currentSlide(appName, index) {
+    if (!carouselIndices[appName]) {
+        carouselIndices[appName] = 0;
+    }
+
+    const slides = document.querySelectorAll(`#carousel-${appName} .carousel-slide`);
+    const dots = document.querySelectorAll(`#dots-${appName} .dot`);
+
+    // Remove active class from current
+    slides[carouselIndices[appName]].classList.remove('active');
+    dots[carouselIndices[appName]].classList.remove('active');
+
+    // Set new index
+    carouselIndices[appName] = index;
+
+    // Add active class to new
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+}
+
+// Initialize all carousels
+document.addEventListener('DOMContentLoaded', () => {
+    const carousels = document.querySelectorAll('[id^="carousel-"]');
+    carousels.forEach(carousel => {
+        const appName = carousel.id.replace('carousel-', '');
+        carouselIndices[appName] = 0;
+    });
+});
+
 // Console message for developers
 console.log('%c🚀 JNS Labs - 혁신적인 디지털 솔루션', 'color: #7c3aed; font-size: 20px; font-weight: bold;');
 console.log('%c웹 어플리케이션과 안드로이드 앱 개발에 관심이 있으신가요?', 'color: #8b5cf6; font-size: 14px;');
