@@ -1,10 +1,10 @@
 // Smooth scroll for navigation links
 document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         const targetSection = document.querySelector(targetId);
-        
+
         if (targetSection) {
             const offsetTop = targetSection.offsetTop - 70;
             window.scrollTo({
@@ -130,11 +130,11 @@ revealElements.forEach(element => {
 
 // Add hover effect to tech badges
 document.querySelectorAll('.tech-badge').forEach(badge => {
-    badge.addEventListener('mouseenter', function() {
+    badge.addEventListener('mouseenter', function () {
         this.style.transform = 'translateY(-3px) scale(1.05)';
     });
-    
-    badge.addEventListener('mouseleave', function() {
+
+    badge.addEventListener('mouseleave', function () {
         this.style.transform = 'translateY(0) scale(1)';
     });
 });
@@ -142,4 +142,4 @@ document.querySelectorAll('.tech-badge').forEach(badge => {
 // Console message for developers
 console.log('%c🚀 JNS Labs - 혁신적인 디지털 솔루션', 'color: #7c3aed; font-size: 20px; font-weight: bold;');
 console.log('%c웹 어플리케이션과 안드로이드 앱 개발에 관심이 있으신가요?', 'color: #8b5cf6; font-size: 14px;');
-console.log('%ccontact@jnslabs.com으로 문의해주세요!', 'color: #a78bfa; font-size: 14px;');
+console.log('%cjns@jeons.kr으로 문의해주세요!', 'color: #a78bfa; font-size: 14px;');
